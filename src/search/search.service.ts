@@ -11,9 +11,11 @@ export class SearchService {
       host: this.config.get('MEILISEARCH_HOST'),
     });
 
-    const result = await client.index('movies').search(searchRequest.name, {
-      limit: 30,
-    });
+    const result = await client
+      .index(searchRequest.applicationName)
+      .search(searchRequest.name, {
+        limit: 30,
+      });
 
     return result;
   }
