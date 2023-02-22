@@ -1,5 +1,5 @@
 import { Controller } from '@nestjs/common';
-import { MessagePattern } from '@nestjs/microservices';
+import { GrpcMethod } from '@nestjs/microservices';
 import { SearchByNameRequest } from './requests/search.request';
 import { SearchService } from './search.service';
 
@@ -7,7 +7,7 @@ import { SearchService } from './search.service';
 export class SearchController {
   constructor(private searchService: SearchService) {}
 
-  @MessagePattern({ cmd: 'searchByName' })
+  @GrpcMethod('SearchGrpcService', 'SearchByName')
   searchByName(searchRequest: SearchByNameRequest) {
     return this.searchService.searchByName(searchRequest);
   }

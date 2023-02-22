@@ -1,0 +1,17 @@
+syntax = "proto3";
+import "google/protobuf/struct.proto";
+
+package search;
+
+service SearchGrpcService {
+  rpc SearchByName (SearchByNameRequst) returns (SearchByNameReturn) {}
+}
+
+message SearchByNameRequst {
+  string name = 1;
+  string applicationName = 2;
+}
+
+message SearchByNameReturn {
+  map<string, string> searchResult = 1;
+}

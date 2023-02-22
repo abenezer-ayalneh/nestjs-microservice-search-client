@@ -17,6 +17,8 @@ export class SearchService {
         limit: 30,
       });
 
-    return result;
+    console.log(result);
+
+    return { searchResult: result };
   }
 }
